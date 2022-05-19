@@ -1,0 +1,51 @@
+{
+  "name": "krona/import-text",
+  "version": "0.0.1",
+  "title": "Creates a Krona chart using the Krona ktImportText function.",
+  "scm": "https://github.com/marbl/Krona/wiki",
+  "schema": {
+    "input": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "textFile": {
+          "type": "string",
+          "format": "file",
+          "required": true,
+          "description": "Tab-delimited file. The first column generally contains numeric values representing the numeric contribution of the group (see the `withQuantityColumn´ input). This is followed by tab-separated columns representing a list of wedges to contribute to (starting from the highest hierarchical level)."
+        },
+        "withQuantityColumn": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Set this value to `true´ if the first column of the `textFile´ input contains numeric values (quantity), otherwise this value should be set to `false´."
+        },
+        "outputPrefix": {
+          "type": "string",
+          "default": "krona",
+          "required": false,
+          "description": "Prefix for output file."
+        }
+      }
+    },
+    "output": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kronagram": {
+          "type": "string",
+          "required": true,
+          "format": "file",
+          "description": "Interactive Krona chart in HTML format."
+        }
+      }
+    }
+  },
+  "author": "batchx@ondovb",
+  "runtime": {
+    "minMem": 4000
+  },
+  "changeLog": "Initial version."
+}
